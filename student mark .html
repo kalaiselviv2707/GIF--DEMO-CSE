@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Student Marks Calculator</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    input { margin: 5px; padding: 5px; width: 80px; }
+    button { margin-top: 10px; padding: 8px 12px; }
+    #result { margin-top: 15px; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <h2>Student Marks Calculator</h2>
+
+  <label>Subject 1: <input type="number" id="mark1" /></label><br />
+  <label>Subject 2: <input type="number" id="mark2" /></label><br />
+  <label>Subject 3: <input type="number" id="mark3" /></label><br />
+  <label>Subject 4: <input type="number" id="mark4" /></label><br />
+
+  <button onclick="calculate()">Calculate</button>
+
+  <div id="result"></div>
+
+  <script>
+    function calculate() {
+      let marks = [
+        Number(document.getElementById("mark1").value),
+        Number(document.getElementById("mark2").value),
+        Number(document.getElementById("mark3").value),
+        Number(document.getElementById("mark4").value)
+      ];
+
+      let total = 0;
+      for (let i = 0; i < marks.length; i++) {
+        total += marks[i];
+      }
+
+      let average = total / marks.length;
+      let grade = "";
+
+      if (average >= 90) grade = "A";
+      else if (average >= 75) grade = "B";
+      else if (average >= 60) grade = "C";
+      else grade = "D";
+
+      document.getElementById("result").innerText =
+        `Total: ${total}, Average: ${average.toFixed(2)}, Grade: ${grade}`;
+    }
+  </script>
+
+</body>
+</html>
